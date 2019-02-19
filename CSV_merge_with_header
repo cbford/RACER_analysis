@@ -1,0 +1,13 @@
+# Python script to merge CSVs with same header so result has single header and all data from files appended 
+
+import pandas as pd
+import glob
+import os
+
+path="C:/Users/cbford/Documents/RACER/Lebanon data/Year 2/end/log_files/spatial"
+
+os.chdir(path)
+
+logfiles = glob.glob("C:/Users/cbford/Documents/RACER/Lebanon data/Year 2/end/log_files/spatial/*.csv")
+df = pd.concat((pd.read_csv(f, header = 0) for f in logfiles))
+df.to_csv("all_merged.csv")
